@@ -27,36 +27,47 @@ More sound packs are coming in future releases. Want a particular switch?
 
 ## Install
 
-**1. Download and drag**
+### 1. Download and drag to Applications
 
-[Download **Clackey.dmg**](https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg), open it,
-and drag **Clackey** onto **Applications**.
+[Download **Clackey.dmg**](https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg) and open it.
+Drag **Clackey** onto **Applications**.
 
-**2. Open it from Applications**
+<img src="docs/install/dmg.png" width="420" alt="Clackey disk window with Clackey and Applications">
+
+### 2. Open it from Applications
 
 Open your **Applications** folder and double-click **Clackey**. Don't open it from the disk window.
-The first time, macOS blocks it because it isn't from the App Store. Click **Done**.
+macOS blocks it the first time because it isn't from the App Store. Click **Done**.
 
-<img src="docs/install/blocked.png" width="300" alt="Clackey Not Opened dialog with a Done button">
+<img src="docs/install/blocked.png" width="280" alt="Clackey Not Opened dialog">
 
-**3. Allow it in System Settings**
+### 3. Click Open Anyway
 
 Go to **System Settings › Privacy & Security** and scroll down to **Security**.
-Next to *"Clackey" was blocked*, click **Open Anyway**. In the dialog that appears, click **Open Anyway** again
-(not Move to Trash), then enter your password.
+Click **Open Anyway** next to *"Clackey" was blocked*.
 
-<img src="docs/install/open-anyway.png" width="560" alt="Privacy & Security with the Open Anyway button and confirmation dialog">
+<img src="docs/install/security.png" width="560" alt="Privacy & Security showing Open Anyway for Clackey">
 
-**4. Turn on Input Monitoring**
+In the dialog that appears, click **Open Anyway** again, then enter your password or use Touch ID.
+
+<img src="docs/install/confirm.png" width="260" alt="Open Clackey confirmation dialog">
+
+### 4. Turn on Input Monitoring
 
 When asked, turn on **Clackey** under **Privacy & Security › Input Monitoring**. This lets it hear your key presses.
 If Clackey closes afterwards, open it again from Applications.
 
-**5. Start typing**
+<img src="docs/install/input-monitoring.png" width="560" alt="Input Monitoring with Clackey turned on">
 
-An **fn** key icon appears in your menu bar. That's it, and macOS won't ask again.
+### 5. Start typing
 
-> **No icon, or ⚠︎ in the menu bar?** Make sure you clicked **Open Anyway** (step 3) and that Input Monitoring is on (step 4),
+The **fn** key icon appears in your menu bar. Click it to change the sound, volume and more.
+
+<img src="docs/install/menu.png" width="280" alt="Clackey menu in the menu bar">
+
+You only do this once. macOS won't ask again.
+
+> **No icon, or ⚠︎ in the menu bar?** Make sure you clicked **Open Anyway** (step 3) and turned on Input Monitoring (step 4),
 > then open Clackey from Applications again.
 
 ## Privacy

@@ -10,7 +10,7 @@ cd "$(dirname "$0")/.."
 
 APP_NAME="Clackey"
 BUNDLE_ID="${BUNDLE_ID:-io.github.aakocval.Clackey}"
-VERSION="${VERSION:-0.1.0}"
+VERSION="${VERSION:-1.0.0}"
 BUILD="${BUILD:-$(date +%Y%m%d%H%M)}"
 SIGN_ID="${SIGN_ID:--}"
 
