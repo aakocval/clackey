@@ -27,15 +27,37 @@ More sound packs are coming in future releases. Want a particular switch?
 
 ## Install
 
-1. [Download **Clackey.dmg**](https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg) and open it.
-2. Drag **Clackey** onto **Applications**.
-3. Open Clackey. The first time, macOS blocks it because it isn't from the App Store.
-   Go to **System Settings › Privacy & Security** and click **Open Anyway**.
-4. When asked, turn on Clackey under **Input Monitoring**.
+**1. Download and drag**
 
-An **fn** key icon appears in your menu bar. Start typing.
+[Download **Clackey.dmg**](https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg), open it,
+and drag **Clackey** onto **Applications**.
 
-> **See ⚠︎ in the menu bar?** Input Monitoring is off. Turn it on in System Settings, then reopen Clackey.
+**2. Open it from Applications**
+
+Open your **Applications** folder and double-click **Clackey**. Don't open it from the disk window.
+The first time, macOS blocks it because it isn't from the App Store. Click **Done**.
+
+<img src="docs/install/blocked.png" width="300" alt="Clackey Not Opened dialog with a Done button">
+
+**3. Allow it in System Settings**
+
+Go to **System Settings › Privacy & Security** and scroll down to **Security**.
+Next to *"Clackey" was blocked*, click **Open Anyway**. In the dialog that appears, click **Open Anyway** again
+(not Move to Trash), then enter your password.
+
+<img src="docs/install/open-anyway.png" width="560" alt="Privacy & Security with the Open Anyway button and confirmation dialog">
+
+**4. Turn on Input Monitoring**
+
+When asked, turn on **Clackey** under **Privacy & Security › Input Monitoring**. This lets it hear your key presses.
+If Clackey closes afterwards, open it again from Applications.
+
+**5. Start typing**
+
+An **fn** key icon appears in your menu bar. That's it, and macOS won't ask again.
+
+> **No icon, or ⚠︎ in the menu bar?** Make sure you clicked **Open Anyway** (step 3) and that Input Monitoring is on (step 4),
+> then open Clackey from Applications again.
 
 ## Privacy
 
