@@ -5,7 +5,7 @@ name: Demo site
 on:
   push:
     branches: [main]
-    paths: ["site/**", "Resources/Packs/**", "Resources/Mouse/**", "docs/logo.png", "scripts/build_site.sh"]
+    paths: ["site/**", "Resources/Packs/**", "Resources/Mouse/**", "docs/logo.png", "docs/qr.png", "scripts/build_site.sh"]
   workflow_dispatch:
 
 permissions:

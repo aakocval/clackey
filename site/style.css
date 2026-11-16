@@ -339,6 +339,27 @@ input[type="range"]::-moz-range-thumb {
 .link { color: var(--accent); font-size: 17px; text-decoration: none; }
 .link:hover { text-decoration: underline; }
 
+/* ---------- share ---------- */
+
+.share {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+}
+
+.share img {
+  width: 112px;
+  height: 112px;
+  border-radius: 14px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 4px 14px rgba(0, 0, 0, 0.08);
+  image-rendering: pixelated;   /* keep the modules crisp */
+}
+
+.share p { margin: 0; font-size: 14px; color: var(--secondary); line-height: 1.5; }
+.share span { color: var(--tertiary); font-size: 12px; }
+
 footer {
   padding: 24px 16px 40px;
   text-align: center;

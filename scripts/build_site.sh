@@ -12,6 +12,7 @@ rm -rf "$OUT"
 mkdir -p "$OUT/sounds"
 cp site/* "$OUT/"
 cp docs/logo.png "$OUT/logo.png"
+cp docs/qr.png "$OUT/qr.png"
 cp -R Resources/Packs "$OUT/sounds/Packs"
 [[ -d Resources/Mouse ]] && cp -R Resources/Mouse "$OUT/sounds/Mouse"
 find "$OUT/sounds" -name 'CREDITS.txt' -delete
