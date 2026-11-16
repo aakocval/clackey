@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- GitHub Pages can't send headers, so the CSP lives here: this page only loads its own files. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; media-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="light dark">
+  <title>Clackey: mechanical keyboard sounds for your Mac</title>
+  <meta name="description" content="Free, open-source menu-bar app that adds real mechanical keyboard sounds to your MacBook. Try it in your browser.">
+  <meta property="og:title" content="Clackey">
+  <meta property="og:description" content="Real mechanical keyboard sounds for your MacBook. Type here to hear it.">
+  <meta property="og:image" content="logo.png">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <img class="logo" src="logo.png" alt="" width="96" height="96">
+      <h1>Clackey</h1>
+      <p class="tagline">Mechanical keyboard sounds for your MacBook.</p>
+    </header>
+
+    <section class="stage" aria-label="Try it">
+      <p class="typed" id="typed" aria-live="off"><span id="typed-text"></span><span class="caret"></span></p>
+      <p class="hint" id="hint">Start typing to hear it.</p>
+      <div class="deck" id="keyboard" role="group" aria-label="Keyboard. Type or tap the keys."></div>
+    </section>
+
+    <section class="controls" aria-label="Sound settings">
+      <div class="segmented" id="packs" role="radiogroup" aria-label="Switch"></div>
+      <label class="slider">
+        <span class="label">Volume</span>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8">
+      </label>
+      <div class="switches">
+        <label class="switch"><input type="checkbox" role="switch" id="mouse" checked><span></span>Mouse clicks</label>
+        <label class="switch"><input type="checkbox" role="switch" id="spatial" checked><span></span>Spatial audio</label>
+      </div>
+    </section>
+
+    <section class="cta">
+      <a class="button" id="download" href="#">Download for Mac</a>
+      <a class="link" id="github" href="#">View on GitHub <span aria-hidden="true">›</span></a>
+      <p class="fine">Free and open source · macOS 13 or later · Apple silicon and Intel</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Sounds are CC0 recordings from <a href="https://freesound.org" rel="noopener">Freesound</a>.
+      Nothing you type here leaves your browser.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

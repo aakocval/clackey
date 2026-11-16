@@ -1,0 +1,3 @@
+"20131209_mouse clicks_OlympusLS10_xy.wav" by Soundscape_Leuphana, CC0 1.0
+https://freesound.org/people/Soundscape_Leuphana/sounds/210309/
+Sliced with scripts/slice_recording.py
