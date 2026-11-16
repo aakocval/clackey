@@ -4,7 +4,7 @@
 #
 #   scripts/make_dmg.sh             # after scripts/build_app.sh
 #
-# Env: SIGN_ID (codesign identity; "-" = ad-hoc)
+# Env: SIGN_ID (Developer ID identity; when unset the DMG is left unsigned)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -31,7 +31,12 @@ hdiutil detach -quiet "$MNT"
 
 rm -f "$DMG"
 hdiutil convert -quiet "$RW" -format UDZO -imagekey zlib-level=9 -o "$DMG"
-codesign --force --sign "${SIGN_ID:--}" "$DMG"
+# Only sign the DMG with a real Developer ID (and notarize it). An ad-hoc signature on a
+# disk image makes Gatekeeper refuse to open it ("Apple could not verify..."), while an
+# unsigned DMG opens normally and Gatekeeper checks the app inside on first launch instead.
+if [[ -n "${SIGN_ID:-}" && "${SIGN_ID}" != "-" ]]; then
+    codesign --force --sign "$SIGN_ID" "$DMG"
+fi
 hdiutil verify -quiet "$DMG"
 # Same file under a fixed name, so .../releases/latest/download/Clackey.dmg always gets the newest.
 cp "$DMG" build/Clackey.dmg
