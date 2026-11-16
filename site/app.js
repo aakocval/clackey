@@ -287,6 +287,7 @@ function wireLinks() {
   set(".js-install", INSTALL);
   set(".js-github", REPO);
   set(".js-request", REQUEST);
+  $("year").textContent = new Date().getFullYear();
   if (!IS_MOBILE) return;
 
   // On a phone the DMG is useless: offer to send the link to your Mac instead.
