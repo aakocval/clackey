@@ -70,6 +70,12 @@ scripts/build_app.sh && open build/Clackey.app
 
 To run the browser demo locally, use `scripts/build_site.sh serve`.
 
+## Share
+
+<img src="docs/qr.png" width="150" alt="QR code linking to aakocval.github.io/clackey">
+
+**[aakocval.github.io/clackey](https://aakocval.github.io/clackey/)**: scan or send this link to try Clackey in the browser and download it.
+
 ## Credits
 
 Sounds are CC0 recordings from [Freesound](https://freesound.org):
