@@ -68,6 +68,24 @@ The **fn** key icon appears in your menu bar. Click it to change the sound, volu
 You only do this once. macOS won't ask again, and Clackey starts automatically when you log in.
 To change that, turn off **Launch at Login** in its menu.
 
+### Or install with Terminal
+
+Paste this into **Terminal**. It downloads the latest version, installs it (or updates an existing copy), and opens it:
+
+```bash
+curl -fL -o /tmp/Clackey.dmg https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg && \
+hdiutil attach -quiet -nobrowse -mountpoint /tmp/Clackey /tmp/Clackey.dmg && \
+{ osascript -e 'quit app "Clackey"' 2>/dev/null || true; } && \
+rm -rf /Applications/Clackey.app && \
+ditto /tmp/Clackey/Clackey.app /Applications/Clackey.app && \
+hdiutil detach -quiet /tmp/Clackey && rm /tmp/Clackey.dmg && \
+open /Applications/Clackey.app
+```
+
+Files downloaded with `curl` aren't marked as coming from the internet, so you skip step 3 (**Open Anyway**).
+You still turn on **Input Monitoring** (step 4). To check the file first, compare `shasum -a 256 /tmp/Clackey.dmg`
+with the checksum on the [release page](https://github.com/aakocval/clackey/releases/latest).
+
 > **No icon, or ⚠︎ in the menu bar?** Make sure you clicked **Open Anyway** (step 3) and turned on Input Monitoring (step 4),
 > then open Clackey from Applications again.
 
