@@ -27,8 +27,8 @@ More sound packs are coming in future releases. Want a particular switch?
 
 ## Install
 
-1. Download **Clackey-x.y.z.zip** from [Releases](https://github.com/aakocval/clackey/releases/latest) and double-click it.
-2. Drag **Clackey** into your **Applications** folder.
+1. Download **Clackey-x.y.z.dmg** from [Releases](https://github.com/aakocval/clackey/releases/latest) and open it.
+2. Drag **Clackey** onto **Applications**.
 3. Open Clackey. The first time, macOS blocks it because it isn't from the App Store.
    Go to **System Settings › Privacy & Security** and click **Open Anyway**.
 4. When asked, turn on Clackey under **Input Monitoring**.
@@ -67,6 +67,8 @@ git clone https://github.com/aakocval/clackey.git
 cd clackey
 scripts/build_app.sh && open build/Clackey.app
 ```
+
+To build the release DMG and zip, use `UNIVERSAL=1 scripts/build_app.sh release`.
 
 To run the browser demo locally, use `scripts/build_site.sh serve`.
 

@@ -1,8 +1,8 @@
 #!/bin/bash
-# Build Clackey.app (and optionally a release zip).
+# Build Clackey.app (and optionally the release downloads).
 #
-#   scripts/build_app.sh            # native arch, ad-hoc signed -> build/Clackey.app
-#   UNIVERSAL=1 scripts/build_app.sh zip   # arm64 + x86_64, plus build/Clackey-<version>.zip
+#   scripts/build_app.sh                       # native arch, ad-hoc signed -> build/Clackey.app
+#   UNIVERSAL=1 scripts/build_app.sh release   # arm64 + x86_64, plus build/Clackey-<version>.dmg and .zip
 #
 # Env: BUNDLE_ID, VERSION, SIGN_ID (codesign identity; "-" = ad-hoc)
 set -euo pipefail
@@ -43,9 +43,13 @@ codesign --force --options runtime --timestamp=none \
 codesign --verify --strict "$APP"
 echo "Built $APP ($(lipo -archs "$APP/Contents/MacOS/$APP_NAME"))"
 
-if [[ "${1:-}" == "zip" ]]; then
+if [[ "${1:-}" == "zip" || "${1:-}" == "release" ]]; then
     ZIP="build/$APP_NAME-$VERSION.zip"
     rm -f "$ZIP"
     ditto -c -k --norsrc --noextattr --keepParent "$APP" "$ZIP"
     echo "Zipped $ZIP"
+fi
+
+if [[ "${1:-}" == "release" ]]; then
+    scripts/make_dmg.sh
 fi

@@ -12,10 +12,10 @@ You can check all of this in [`KeyTap.swift`](Sources/Clackey/KeyTap.swift) and 
 
 ## Verifying a download
 
-Each release lists the SHA-256 of its zip. To check it:
+Each release lists the SHA-256 of its DMG and zip. To check yours:
 
 ```bash
-shasum -a 256 ~/Downloads/Clackey-*.zip
+shasum -a 256 ~/Downloads/Clackey-*.dmg
 ```
 
 ## Reporting a vulnerability
