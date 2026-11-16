@@ -36,6 +36,7 @@ sed -e "s/__BUNDLE_ID__/$BUNDLE_ID/" -e "s/__VERSION__/$VERSION/" -e "s/__BUILD_
     Resources/Info.plist > "$APP/Contents/Info.plist"
 
 strip -x "$APP/Contents/MacOS/$APP_NAME"
+xattr -cr "$APP"   # no extended attributes, so zips carry no ._ AppleDouble files
 # Hardened runtime + App Sandbox (see Resources/Clackey.entitlements).
 codesign --force --options runtime --timestamp=none \
     --entitlements Resources/Clackey.entitlements --sign "$SIGN_ID" "$APP"
@@ -45,6 +46,6 @@ echo "Built $APP ($(lipo -archs "$APP/Contents/MacOS/$APP_NAME"))"
 if [[ "${1:-}" == "zip" ]]; then
     ZIP="build/$APP_NAME-$VERSION.zip"
     rm -f "$ZIP"
-    ditto -c -k --keepParent "$APP" "$ZIP"
+    ditto -c -k --norsrc --noextattr --keepParent "$APP" "$ZIP"
     echo "Zipped $ZIP"
 fi
