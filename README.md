@@ -7,7 +7,7 @@
 <p align="center">
   Mechanical keyboard sounds for your MacBook.<br>
   <a href="https://aakocval.github.io/clackey/"><b>Try it in your browser</b></a> ·
-  <a href="https://github.com/aakocval/clackey/releases/latest"><b>Download</b></a>
+  <a href="https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg"><b>Download</b></a>
 </p>
 
 ---
@@ -27,7 +27,7 @@ More sound packs are coming in future releases. Want a particular switch?
 
 ## Install
 
-1. Download **Clackey-x.y.z.dmg** from [Releases](https://github.com/aakocval/clackey/releases/latest) and open it.
+1. [Download **Clackey.dmg**](https://github.com/aakocval/clackey/releases/latest/download/Clackey.dmg) and open it.
 2. Drag **Clackey** onto **Applications**.
 3. Open Clackey. The first time, macOS blocks it because it isn't from the App Store.
    Go to **System Settings › Privacy & Security** and click **Open Anyway**.

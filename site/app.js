@@ -4,6 +4,8 @@
 "use strict";
 
 const REPO = "https://github.com/aakocval/clackey";
+// Fixed asset name on every release, so this always downloads the newest DMG.
+const DOWNLOAD = REPO + "/releases/latest/download/Clackey.dmg";
 const PITCHES = [0.97, 0.985, 1, 1.015, 1.03];
 const WIDE_KEYS = ["space", "back", "return"];
 
@@ -270,7 +272,7 @@ function wireControls() {
     box.checked = settings[id];
     box.addEventListener("change", () => { settings[id] = box.checked; save(); });
   }
-  $("download").href = REPO + "/releases/latest";
+  $("download").href = DOWNLOAD;
   $("github").href = REPO;
 }
 

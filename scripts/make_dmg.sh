@@ -33,4 +33,6 @@ rm -f "$DMG"
 hdiutil convert -quiet "$RW" -format UDZO -imagekey zlib-level=9 -o "$DMG"
 codesign --force --sign "${SIGN_ID:--}" "$DMG"
 hdiutil verify -quiet "$DMG"
-echo "Built $DMG ($(du -h "$DMG" | cut -f1 | xargs))"
+# Same file under a fixed name, so .../releases/latest/download/Clackey.dmg always gets the newest.
+cp "$DMG" build/Clackey.dmg
+echo "Built $DMG and build/Clackey.dmg ($(du -h "$DMG" | cut -f1 | xargs))"
