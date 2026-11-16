@@ -124,6 +124,10 @@ To build the release DMG and zip, use `UNIVERSAL=1 scripts/build_app.sh release`
 
 To run the browser demo locally, use `scripts/build_site.sh serve`.
 
+## Support
+
+Clackey is free. If you enjoy it, you can [buy me a coffee on Ko-fi](https://ko-fi.com/aakocval) ☕
+
 ## Share
 
 <img src="docs/qr.png" width="150" alt="QR code linking to aakocval.github.io/clackey">
