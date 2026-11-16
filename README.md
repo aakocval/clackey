@@ -13,6 +13,7 @@
 ---
 
 Clackey lives in your menu bar and plays a real mechanical switch sound every time you type or click.
+Typing feels more tactile and satisfying, which makes it easier to get into a focused flow.
 
 - Two recorded switches: **Gateron Red** and **Cherry MX Red**
 - Mouse and trackpad click sounds
@@ -20,6 +21,9 @@ Clackey lives in your menu bar and plays a real mechanical switch sound every ti
 - Free, open source, and no network access
 
 Requires macOS 13 or later.
+
+More sound packs are coming in future releases. Want a particular switch?
+[Open an issue](https://github.com/aakocval/clackey/issues).
 
 ## Install
 
@@ -37,6 +41,7 @@ An **fn** key icon appears in your menu bar. Start typing.
 
 Clackey only reads which key was pressed, so it can choose a sound. It doesn't record, store or send
 anything, and it runs in Apple's App Sandbox with no network access. Password fields stay silent.
+See [SECURITY.md](SECURITY.md).
 
 ## Custom sounds
 

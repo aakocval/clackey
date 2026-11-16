@@ -42,13 +42,20 @@ let typed = "";
 // ---------------------------------------------------------------- settings
 
 function load() {
-  const defaults = { pack: null, volume: 0.8, mouse: true, spatial: true };
+  const s = { pack: null, volume: 0.8, mouse: true, spatial: true };
   try {
-    return { ...defaults, ...JSON.parse(localStorage.getItem("clackey") || "{}") };
-  } catch {
-    return defaults;
-  }
+    // only accept known keys with the right types; anything else in storage is ignored
+    const saved = JSON.parse(localStorage.getItem("clackey") || "{}");
+    if (typeof saved.pack === "string") s.pack = saved.pack;
+    if (Number.isFinite(saved.volume)) s.volume = Math.min(1, Math.max(0, saved.volume));
+    if (typeof saved.mouse === "boolean") s.mouse = saved.mouse;
+    if (typeof saved.spatial === "boolean") s.spatial = saved.spatial;
+  } catch { /* storage blocked or corrupt: use defaults */ }
+  return s;
 }
+
+const hasPack = (name) => Object.prototype.hasOwnProperty.call(manifest.packs, name)
+  && Array.isArray(manifest.packs[name]);
 
 function save() {
   try { localStorage.setItem("clackey", JSON.stringify(settings)); } catch { /* private mode */ }
@@ -254,7 +261,7 @@ function wireControls() {
   const volume = $("volume");
   volume.value = settings.volume;
   volume.addEventListener("input", () => {
-    settings.volume = Number(volume.value);
+    settings.volume = Math.min(1, Math.max(0, Number(volume.value) || 0));
     master.gain.value = settings.volume;
     save();
   });
@@ -284,7 +291,7 @@ async function start() {
   master.connect(ctx.destination);
 
   manifest = await (await fetch("sounds/manifest.json")).json();
-  if (!manifest.packs[settings.pack]) settings.pack = manifest.default;
+  if (!hasPack(settings.pack)) settings.pack = manifest.default;
   wireControls();
   wireEvents();
   await loadSet("Packs/" + settings.pack, manifest.packs[settings.pack]);
