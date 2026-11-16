@@ -8,6 +8,7 @@ private enum Pref {
     static let tone = "tone"
     static let spatial = "spatial"
     static let mouse = "mouse"
+    static let loginItemSetUp = "loginItemSetUp"
 }
 
 private let defaultPack = "Gateron Red"
@@ -51,6 +52,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         defaults.register(defaults: [Pref.enabled: true, Pref.volume: 0.7, Pref.pack: defaultPack,
                                      Pref.tone: 0.0, Pref.spatial: true, Pref.mouse: true])
         try? FileManager.default.createDirectory(at: PackLibrary.userPacksURL, withIntermediateDirectories: true)
+        enableLaunchAtLoginOnFirstRun()
 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         let menu = NSMenu()
@@ -76,6 +78,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             self.engine?.play(sound, pan: pan)
         }
         startListening()
+    }
+
+    /// Launch at Login is on by default: turned on once, the first time the installed app runs.
+    /// If the user turns it off later, it stays off.
+    private func enableLaunchAtLoginOnFirstRun() {
+        guard !defaults.bool(forKey: Pref.loginItemSetUp) else { return }
+        // Only for the installed copy, never when run from the DMG window or a build folder.
+        guard Bundle.main.bundlePath.contains("/Applications/") else { return }
+        defaults.set(true, forKey: Pref.loginItemSetUp)
+        if SMAppService.mainApp.status != .enabled {
+            try? SMAppService.mainApp.register()
+        }
     }
 
     /// Creates the key tap, or keeps retrying until Input Monitoring is granted.

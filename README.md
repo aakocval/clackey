@@ -65,7 +65,8 @@ The **fn** key icon appears in your menu bar. Click it to change the sound, volu
 
 <img src="docs/install/menu.png" width="280" alt="Clackey menu in the menu bar">
 
-You only do this once. macOS won't ask again.
+You only do this once. macOS won't ask again, and Clackey starts automatically when you log in.
+To change that, turn off **Launch at Login** in its menu.
 
 > **No icon, or ⚠︎ in the menu bar?** Make sure you clicked **Open Anyway** (step 3) and turned on Input Monitoring (step 4),
 > then open Clackey from Applications again.
