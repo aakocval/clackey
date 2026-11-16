@@ -6,6 +6,12 @@
 const REPO = "https://github.com/aakocval/clackey";
 // Fixed asset name on every release, so this always downloads the newest DMG.
 const DOWNLOAD = REPO + "/releases/latest/download/Clackey.dmg";
+const INSTALL = REPO + "#install";
+const REQUEST = REPO + "/issues";
+const SITE = "https://aakocval.github.io/clackey/";
+// iPhone, iPad (reports itself as a Mac with touch) and Android can't run the app.
+const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform));
 const PITCHES = [0.97, 0.985, 1, 1.015, 1.03];
 const WIDE_KEYS = ["space", "back", "return"];
 
@@ -272,8 +278,33 @@ function wireControls() {
     box.checked = settings[id];
     box.addEventListener("change", () => { settings[id] = box.checked; save(); });
   }
-  $("download").href = DOWNLOAD;
-  $("github").href = REPO;
+  wireLinks();
+}
+
+function wireLinks() {
+  const set = (cls, href) => document.querySelectorAll(cls).forEach((a) => { a.href = href; });
+  set(".js-download", DOWNLOAD);
+  set(".js-install", INSTALL);
+  set(".js-github", REPO);
+  set(".js-request", REQUEST);
+  if (!IS_MOBILE) return;
+
+  // On a phone the DMG is useless: offer to send the link to your Mac instead.
+  $("cta-note").textContent = "Clackey runs on Mac. Send yourself the link to install it there.";
+  document.querySelectorAll(".js-download").forEach((a) => {
+    a.textContent = a.classList.contains("pill") ? "Send to Mac" : "Send to my Mac";
+    a.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const data = { title: "Clackey", text: "Mechanical keyboard sounds for your Mac", url: SITE };
+      try {
+        if (navigator.share) { await navigator.share(data); return; }
+        await navigator.clipboard.writeText(SITE);
+        const label = a.textContent;
+        a.textContent = "Link copied";
+        setTimeout(() => { a.textContent = label; }, 2000);
+      } catch { /* share sheet dismissed */ }
+    });
+  });
 }
 
 function renderPacks() {

@@ -9,13 +9,32 @@
   <meta name="color-scheme" content="light dark">
   <title>Clackey: mechanical keyboard sounds for your Mac</title>
   <meta name="description" content="Free, open-source menu-bar app that adds real mechanical keyboard sounds to your MacBook. Try it in your browser.">
+  <link rel="canonical" href="https://aakocval.github.io/clackey/">
+  <!-- link previews (iMessage, Slack, X) need absolute URLs -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aakocval.github.io/clackey/">
   <meta property="og:title" content="Clackey">
   <meta property="og:description" content="Real mechanical keyboard sounds for your MacBook. Type here to hear it.">
-  <meta property="og:image" content="logo.png">
+  <meta property="og:image" content="https://aakocval.github.io/clackey/logo.png">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav class="topbar" aria-label="Clackey">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <a class="brand" href="./"><img src="logo.png" alt="" width="22" height="22">Clackey</a>
+        <a class="pill js-download" href="#">Download</a>
+      </div>
+      <div class="topbar-right">
+        <a class="js-install" href="#">How to install</a>
+        <a class="js-github" href="#">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
   <main>
     <header class="hero">
       <img class="logo" src="logo.png" alt="" width="96" height="96">
@@ -42,8 +61,12 @@
     </section>
 
     <section class="cta">
-      <a class="button" id="download" href="#">Download for Mac</a>
-      <a class="link" id="github" href="#">View on GitHub <span aria-hidden="true">›</span></a>
+      <a class="button js-download" href="#">Download for Mac</a>
+      <p class="cta-note" id="cta-note">Free · macOS 13 or later · Apple silicon and Intel</p>
+      <div class="cta-links">
+        <a class="link js-install" href="#">How to install <span aria-hidden="true">›</span></a>
+        <a class="link js-github" href="#">View on GitHub <span aria-hidden="true">›</span></a>
+      </div>
     </section>
 
     <section class="share" aria-label="Share">
@@ -53,7 +76,7 @@
   </main>
 
   <footer>
-    <p>Free and open source · macOS 13 or later · More switches coming soon</p>
+    <p>Free and open source · More switches coming soon · <a class="js-request" href="#">Request a switch</a></p>
   </footer>
 
   <script src="app.js"></script>
