@@ -194,15 +194,31 @@ function release(code, el = keyEls.get(code)) {
   play(keySet(), "up", panOf(el));
 }
 
-function updateTyped(e) {
-  if (e.metaKey || e.ctrlKey) return;
-  if (e.key === "Backspace") typed = typed.slice(0, -1);
-  else if (e.key === "Enter") typed = "";
-  else if (e.key.length === 1) typed = (typed + e.key).slice(-80);
+// Adds one key to the text line. `key` follows KeyboardEvent.key: "Backspace", "Enter", or a single character.
+function type(key) {
+  if (key === "Backspace") typed = typed.slice(0, -1);
+  else if (key === "Enter") typed = "";
+  else if (key.length === 1) typed = (typed + key).slice(-80);
   else return;
   // show only the tail so the newest characters stay visible on small screens
   const max = Math.max(12, Math.floor(window.innerWidth / 22));
   $("typed-text").textContent = typed.slice(-max);
+}
+
+function updateTyped(e) {
+  if (e.metaKey || e.ctrlKey) return;
+  type(e.key);
+}
+
+// What tapping an on-screen key types. Mirrors a real keyboard: characters, space, delete and
+// return count; modifiers, tab, caps lock, fn and the arrow keys don't.
+function keyText(code, el) {
+  if (code === "Space") return " ";
+  if (code === "Backspace") return "Backspace";
+  if (code === "Enter") return "Enter";
+  if (/^Arrow/.test(code)) return "";
+  const main = el.querySelector(".main");   // only plain character keys have one
+  return main ? main.textContent.toLowerCase() : "";
 }
 
 // ---------------------------------------------------------------- events
@@ -230,6 +246,7 @@ function wireEvents() {
     e.preventDefault();
     el.setPointerCapture(e.pointerId);
     press(el.dataset.code, el);
+    type(keyText(el.dataset.code, el));
     const up = () => { release(el.dataset.code, el); el.removeEventListener("pointerup", up); el.removeEventListener("pointercancel", up); };
     el.addEventListener("pointerup", up);
     el.addEventListener("pointercancel", up);
